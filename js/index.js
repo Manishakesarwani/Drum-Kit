@@ -14,6 +14,7 @@ for(var i=0; i<btns.length; i++){
 
      var InstrumentPlayed = this.innerHTML;
      makeSound(InstrumentPlayed);
+     buttonAnimation(InstrumentPlayed);
 
 });
 }
@@ -23,6 +24,7 @@ document.addEventListener("keypress", function(event){
   //console.log(a);
   var keypressed = event.key;
   makeSound(keypressed);
+  buttonAnimation(keypressed);
 
 });
 
@@ -54,4 +56,14 @@ function makeSound(Key){
 
    default: console.log(Key);
   }
+}
+
+function buttonAnimation(currentKey){
+  var activeKey = document.querySelector("."+currentKey);
+
+  activeKey.classList.add("pressed");
+
+  setTimeout(function(){
+    activeKey.classList.remove("pressed");
+  }, 100);
 }
